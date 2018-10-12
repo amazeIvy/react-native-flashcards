@@ -2,11 +2,11 @@ import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { purple, white, orange } from '../utils/colors'
 
-const Deck = () => {
+const Deck = ({ title, count }) => {
   return (
     <View style={styles.deckContainer}>
-      <Text style={styles.title}>Front Ends</Text>
-      <Text>3 cards</Text>
+      <Text style={styles.title}>{title}</Text>
+      <Text>{count} cards</Text>
     </View>
   )
 }

@@ -9,7 +9,7 @@ const DECKS_STORAGE_KEY = 'IvyFlashcards:decks'
 */
 export function getDecks () {
   // return AsyncStorage.getItem(DECKS_STORAGE_KEY)
-  const mockDecks = {
+  const decks = {
     React: {
       title: 'React',
       questions: [
@@ -34,7 +34,9 @@ export function getDecks () {
     }
   }
 
-  return mockDecks
+  return new Promise((res, rej) => {
+    setTimeout(() => res({...decks}), 1000)
+  })
 }
 
 // getDeck: take in a single id argument and return the deck associated with that id.
