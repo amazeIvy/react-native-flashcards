@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import { purple, white, orange } from '../utils/colors'
+import { purple, white, gray } from '../utils/colors'
 
 const Deck = ({ title, count }) => {
   return (
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 5,
     borderWidth: 1,
-    borderColor: '#d6d7da',
+    borderColor: gray,
   },
   title: {
     fontSize: 30,
