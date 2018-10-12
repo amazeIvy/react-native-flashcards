@@ -1,6 +1,6 @@
 import { AsyncStorage } from 'react-native'
 
-const DECKS_STORAGE_KEY = 'IvyFlashcards:decks'
+export const DECKS_STORAGE_KEY = 'IvyFlashcards:decks'
 
 /**
 * Return all of the decks along with their titles, questions, and answers
@@ -8,7 +8,11 @@ const DECKS_STORAGE_KEY = 'IvyFlashcards:decks'
 * @function getDecks
 */
 export function getDecks () {
-  // return AsyncStorage.getItem(DECKS_STORAGE_KEY)
+  return AsyncStorage.getItem(DECKS_STORAGE_KEY)
+    .then((results) => formatDecks(results))
+}
+
+function setDummyData () {
   const decks = {
     React: {
       title: 'React',
@@ -34,10 +38,21 @@ export function getDecks () {
     }
   }
 
-  return new Promise((res, rej) => {
-    setTimeout(() => res({...decks}), 1000)
-  })
+  AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(decks))
+
+  return decks
 }
+
+function formatDecks (results) {
+  return results === null
+    ? setDummyData()
+    : JSON.parse(results)
+}
+
+export function clearDecks () {
+  return AsyncStorage.removeItem(DECKS_STORAGE_KEY)
+}
+
 
 // getDeck: take in a single id argument and return the deck associated with that id.
 // saveDeckTitle: take in a single title argument and add it to the decks.
