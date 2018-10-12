@@ -5,11 +5,16 @@ import { handleInitialData } from '../actions'
 import { connect } from 'react-redux'
 import { clearDecks } from '../utils/api' /* only for test */
 
+import PropTypes from 'prop-types'
+
+
 class Decks extends Component {
   componentDidMount () {
     this.props.dispatch(handleInitialData());
   }
+
   render () {
+
     const { decks } = this.props
 
     return (
@@ -39,7 +44,7 @@ const styles = StyleSheet.create({
 
 function mapStateToProps ({ decks }) {
   return {
-    decks
+    decks,
   }
 }
 

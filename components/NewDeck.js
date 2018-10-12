@@ -39,6 +39,7 @@ class NewDeck extends Component {
     })
 
     // Go DECKS view
+    this.props.navigation.navigate('Decks')
   }
   handleInputChange = (input) => {
     this.setState({

@@ -9,9 +9,13 @@ function decks (state = {}, action) {
       }
     case ADD_DECK :
       const { deck } = action
+      let data = state.decks
       return {
         ...state,
-        [deck.title]: deck,
+        decks: {
+          ...data,
+          [deck.title]: deck
+        },
       }
     default :
       return state

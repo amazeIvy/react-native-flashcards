@@ -3,7 +3,6 @@ import { View, Platform } from 'react-native'
 import { createBottomTabNavigator } from 'react-navigation'
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
 
-// import Home from './components/Home'
 import Decks from './components/Decks'
 import NewDeck from './components/NewDeck'
 import { purple, white } from './utils/colors'
@@ -16,7 +15,7 @@ import reducer from './reducers'
 const store = createStore(reducer, middleware)
 
 const Tabs = createBottomTabNavigator({
-  Deck: {
+  Decks: {
     screen: Decks,
     navigationOptions: {
       tabBarLabel: 'DECKS',
