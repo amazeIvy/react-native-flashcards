@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { purple, white, gray } from '../utils/colors'
 
-const Deck = ({ title, count }) => {
+const DeckCard = ({ title, count }) => {
   return (
     <View style={styles.deckContainer}>
       <Text style={styles.title}>{title}</Text>
@@ -29,4 +29,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Deck
+export default DeckCard

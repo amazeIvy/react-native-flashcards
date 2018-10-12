@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View, TouchableOpacity, StyleSheet } from 'react-native'
-import Deck from './Deck'
+import DeckCard from './DeckCard'
 import { handleInitialData } from '../actions'
 import { connect } from 'react-redux'
 import { clearDecks } from '../utils/api' /* only for test */
@@ -20,11 +20,15 @@ class Decks extends Component {
     return (
       <View style={styles.container}>
         {decks && Object.keys(decks).map((key) => (
-          <Deck
-            key={decks[key].title}
-            title={decks[key].title}
-            count={decks[key].questions ? decks[key].questions.length : 0}
-          />
+          <TouchableOpacity key={key} onPress={() => this.props.navigation.navigate(
+            'DeckMain',
+            { title: key }
+          )}>
+            <DeckCard
+              title={decks[key].title}
+              count={decks[key].questions ? decks[key].questions.length : 0}
+            />
+          </TouchableOpacity>
         ))}
         <TouchableOpacity onPress={clearDecks}>
           <Text>Clear</Text>{/* only for test */}
