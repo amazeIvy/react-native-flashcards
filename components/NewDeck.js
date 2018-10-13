@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { AsyncStorage } from 'react-native'
-import { DECKS_STORAGE_KEY } from '../utils/api'
+import { saveDeckTitle } from '../utils/api'
 import { addDeck } from '../actions'
 import {
   View,
@@ -29,10 +29,7 @@ class NewDeck extends Component {
     this.props.dispatch(addDeck(deck))
 
     // Save to AsyncStorage
-    AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify({
-      ...decks,
-      [input]: deck,
-    }))
+    saveDeckTitle(input)
 
     this.setState({
       input: ''

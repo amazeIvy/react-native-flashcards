@@ -25,6 +25,7 @@ function decks (state = {}, action) {
         decks: {
           ...data,
           [title]: {
+            title: title,
             questions: data[title].questions.concat([card])
           }
           // questions: data.questions.push(card)

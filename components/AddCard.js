@@ -9,6 +9,7 @@ import {
 import { connect } from 'react-redux'
 import { addCard } from '../actions'
 import { purple, white, gray } from '../utils/colors'
+import { addCardToDeck } from '../utils/api'
 
 class AddCard extends Component {
   state = {
@@ -28,6 +29,7 @@ class AddCard extends Component {
     dispatch(addCard(card, deckKey))
 
     // save to AsyncStorage
+    addCardToDeck(card, deckKey)
 
     // navigate to DeckMain
     navigation.navigate('DeckMain')
@@ -115,7 +117,6 @@ const styles = StyleSheet.create({
 function mapStateToProps ({ decks }, props) {
   const { deckKey } = props.navigation.state.params
   return {
-    decks,
     title: deckKey
   }
 }

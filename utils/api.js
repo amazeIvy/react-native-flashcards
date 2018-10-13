@@ -49,11 +49,53 @@ function formatDecks (results) {
     : JSON.parse(results)
 }
 
+/**
+* Take in two arguments, title and card, and will add the card to the list of questions
+* for the deck with the associated title.
+*
+* @function addCardToDeck
+*/
+export function addCardToDeck (card, title) {
+  getDecks()
+    .then((decks) => {
+      return {
+        ...decks,
+        [title]: {
+          title,
+          questions: decks[title].questions.concat([card])
+        }
+      }
+    })
+    .then((newDecks) => {
+      AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(newDecks))
+    })
+}
+
+
 export function clearDecks () {
   return AsyncStorage.removeItem(DECKS_STORAGE_KEY)
 }
 
+/**
+* Take in a single title argument and add it to the decks.
+*
+* @function saveDeckTitle
+*/
+export function saveDeckTitle (title) {
+  getDecks()
+    .then((decks) => {
+      return {
+        ...decks,
+        [title]: {
+          title,
+          questions: [],
+        }
+      }
+    })
+    .then((newDecks) => {
+      AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(newDecks))
+    })
+}
+
 
 // getDeck: take in a single id argument and return the deck associated with that id.
-// saveDeckTitle: take in a single title argument and add it to the decks.
-// addCardToDeck: take in two arguments, title and card, and will add the card to the list of questions for the deck with the associated title.
