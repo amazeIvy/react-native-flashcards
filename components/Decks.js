@@ -15,12 +15,12 @@ class Decks extends Component {
 
   render () {
 
-    const { decks } = this.props
+    const { decks, navigation } = this.props
 
     return (
       <View style={styles.container}>
         {decks && Object.keys(decks).map((key) => (
-          <TouchableOpacity key={key} onPress={() => this.props.navigation.navigate(
+          <TouchableOpacity key={key} onPress={() => navigation.navigate(
             'DeckMain',
             { title: key }
           )}>

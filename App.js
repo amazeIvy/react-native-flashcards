@@ -6,6 +6,7 @@ import { FontAwesome, Ionicons } from '@expo/vector-icons'
 import Decks from './components/Decks'
 import NewDeck from './components/NewDeck'
 import DeckMain from './components/DeckMain'
+import AddCard from './components/AddCard'
 import { purple, white } from './utils/colors'
 
 import { createStore } from 'redux'
@@ -54,7 +55,17 @@ const MainNavigator = createStackNavigator({
       headerTintColor: white,
       headerStyle: {
         backgroundColor: purple,
-      }
+      },
+    }
+  },
+  AddCard: {
+    screen: AddCard,
+    navigationOptions: {
+      title: 'Add Card',
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: purple,
+      },
     }
   }
 })

@@ -88,6 +88,7 @@ const styles = StyleSheet.create({
     borderRadius: 2,
     borderWidth: 1,
     borderColor: gray,
+    paddingLeft: 5,
   },
   btn: {
     backgroundColor: purple,

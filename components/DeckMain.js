@@ -12,12 +12,15 @@ class DeckMain extends Component {
   }
 
   render() {
-    const { title, questions } = this.props
+    const { title, questions, navigation } = this.props
     return (
       <View style={styles.container}>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.cardNumber}>{questions.length} cards</Text>
-        <TouchableOpacity style={styles.btnLight}>
+        <TouchableOpacity style={styles.btnLight} onPress={() => navigation.navigate(
+          'AddCard',
+          {deckKey: title}
+        )}>
           <Text style={styles.btnTextDark}>Add Card</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.btnDark}>
