@@ -43,6 +43,10 @@ const Tabs = createBottomTabNavigator({
 const MainNavigator = createStackNavigator({
   Home: {
     screen: Tabs,
+    navigationOptions: {
+      title: 'Home',
+      headerTintColor: 'white'
+    }
   },
   DeckMain: {
     screen: DeckMain,
