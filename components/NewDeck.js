@@ -12,6 +12,8 @@ import {
   TouchableOpacity,
 } from 'react-native'
 import { purple, white, gray, red } from '../utils/colors'
+import commonStyles from '../utils/styles'
+
 
 class NewDeck extends Component {
   state = {
@@ -55,7 +57,7 @@ class NewDeck extends Component {
     const { input, shouldShowValidation } = this.state
 
     return (
-      <KeyboardAvoidingView behavior='padding' style={styles.container}>
+      <KeyboardAvoidingView behavior='padding' style={[commonStyles.container, { flex: 1 }]}>
         <Text style={styles.header}>What is the title of your new deck?</Text>
         <View style={{ flexDirection: 'row', height: 40}}>
           <TextInput

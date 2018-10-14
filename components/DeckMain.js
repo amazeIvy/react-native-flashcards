@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 import { purple, white } from '../utils/colors'
+import commonStyles from '../utils/styles'
+
 
 class DeckMain extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -14,7 +16,7 @@ class DeckMain extends Component {
   render() {
     const { title, questions, navigation } = this.props
     return (
-      <View style={styles.container}>
+      <View style={[commonStyles.container, { flex: 1 }]}>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.cardNumber}>{questions.length} cards</Text>
         <TouchableOpacity style={styles.btnLight} onPress={() => navigation.navigate(
@@ -23,20 +25,23 @@ class DeckMain extends Component {
         )}>
           <Text style={styles.btnTextDark}>Add Card</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.btnDark}>
-          <Text style={styles.btnTextLight}>Start Quiz</Text>
-        </TouchableOpacity>
+        {questions.length > 0
+          ? (
+              <TouchableOpacity style={styles.btnDark} onPress={() => navigation.navigate(
+                'Quiz',
+                {deckKey: title}
+              )}>
+                <Text style={styles.btnTextLight}>Start Quiz</Text>
+              </TouchableOpacity>
+          )
+          : null
+        }
       </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
   title: {
     fontSize: 35,
     fontWeight: 'bold',

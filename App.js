@@ -7,6 +7,7 @@ import Decks from './components/Decks'
 import NewDeck from './components/NewDeck'
 import DeckMain from './components/DeckMain'
 import AddCard from './components/AddCard'
+import Quiz from './components/Quiz'
 import { purple, white } from './utils/colors'
 
 import { createStore } from 'redux'
@@ -67,7 +68,17 @@ const MainNavigator = createStackNavigator({
         backgroundColor: purple,
       },
     }
-  }
+  },
+  Quiz: {
+    screen: Quiz,
+    navigationOptions: {
+      title: 'Quiz',
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: purple,
+      },
+    }
+  },
 })
 
 

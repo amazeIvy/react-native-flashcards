@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import { Text, View, TouchableOpacity, StyleSheet } from 'react-native'
+import { Text, View, TouchableOpacity } from 'react-native'
 import DeckCard from './DeckCard'
 import { handleInitialData } from '../actions'
 import { connect } from 'react-redux'
 import { clearDecks } from '../utils/api' /* only for test */
-
-import PropTypes from 'prop-types'
+import commonStyles from '../utils/styles'
 
 
 class Decks extends Component {
@@ -18,7 +17,7 @@ class Decks extends Component {
     const { decks, navigation } = this.props
 
     return (
-      <View style={styles.container}>
+      <View style={commonStyles.container}>
         {decks && Object.keys(decks).map((key) => (
           <TouchableOpacity key={key} onPress={() => navigation.navigate(
             'DeckMain',
@@ -37,14 +36,6 @@ class Decks extends Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-})
 
 function mapStateToProps ({ decks }) {
   return {
