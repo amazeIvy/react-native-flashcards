@@ -11,11 +11,12 @@ import {
   KeyboardAvoidingView,
   TouchableOpacity,
 } from 'react-native'
-import { purple, white, gray } from '../utils/colors'
+import { purple, white, gray, red } from '../utils/colors'
 
 class NewDeck extends Component {
   state = {
     input: '',
+    shouldShowValidation: false,
   }
   submitTitle = () => {
     const { input } = this.state
@@ -25,26 +26,33 @@ class NewDeck extends Component {
       questions: [],
     }
 
-    // Update Redux
-    this.props.dispatch(addDeck(deck))
+    if (input !== '') {
+      // Update Redux
+      this.props.dispatch(addDeck(deck))
 
-    // Save to AsyncStorage
-    saveDeckTitle(input)
+      // Save to AsyncStorage
+      saveDeckTitle(input)
 
-    this.setState({
-      input: ''
-    })
+      this.setState({
+        input: ''
+      })
 
-    // Go DECKS view
-    this.props.navigation.navigate('Decks')
+      // Go DECKS view
+      this.props.navigation.navigate('Decks')
+    } else {
+      this.setState({
+        shouldShowValidation: true
+      })
+    }
   }
   handleInputChange = (input) => {
     this.setState({
-      input
+      input,
+      shouldShowValidation: false,
     })
   }
   render () {
-    const { input } = this.state
+    const { input, shouldShowValidation } = this.state
 
     return (
       <KeyboardAvoidingView behavior='padding' style={styles.container}>
@@ -57,6 +65,10 @@ class NewDeck extends Component {
             onChangeText={this.handleInputChange}
           />
         </View>
+        {shouldShowValidation
+          ? <Text style={styles.validationText}>Title can't be empty!</Text>
+          : null
+        }
         <TouchableOpacity style={styles.btn} onPress={this.submitTitle}>
           <Text style={styles.btnText}>SUBMIT</Text>
         </TouchableOpacity>
@@ -100,6 +112,9 @@ const styles = StyleSheet.create({
   btnText: {
     color: white,
     fontWeight: '500',
+  },
+  validationText: {
+    color: red
   }
 })
 
