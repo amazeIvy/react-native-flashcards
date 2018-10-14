@@ -1,11 +1,11 @@
 import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import commonStyles from '../utils/styles'
-import { blue, orange} from '../utils/colors'
+import { purple, orange} from '../utils/colors'
 
 const QuizDetail = ({ content, link, handleClickLink }) => {
   return (
-    <View style={commonStyles.container}>
+    <View style={[commonStyles.container, { height: 300 }]}>
       <Text style={styles.content}>{content}</Text>
       <TouchableOpacity onPress={handleClickLink}>
         <Text style={styles.link}>{link}</Text>
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     maxWidth: 300,
     marginTop: 30,
     marginBottom: 30,
-    color: blue,
+    color: purple,
   },
   link: {
     fontSize: 20,
