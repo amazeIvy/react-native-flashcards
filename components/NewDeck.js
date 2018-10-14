@@ -39,8 +39,8 @@ class NewDeck extends Component {
         input: ''
       })
 
-      // Go DECKS view
-      this.props.navigation.navigate('Decks')
+      // Go DECK view
+      this.props.navigation.navigate('DeckMain', {title: input})
     } else {
       this.setState({
         shouldShowValidation: true
@@ -57,7 +57,7 @@ class NewDeck extends Component {
     const { input, shouldShowValidation } = this.state
 
     return (
-      <KeyboardAvoidingView behavior='padding' style={[commonStyles.container, { flex: 1 }]}>
+      <KeyboardAvoidingView behavior='padding' style={[commonStyles.container, { flex: 0.7 }]}>
         <Text style={styles.header}>What is the title of your new deck?</Text>
         <View style={{ flexDirection: 'row', height: 40}}>
           <TextInput
@@ -72,7 +72,7 @@ class NewDeck extends Component {
           : null
         }
         <TouchableOpacity style={styles.btn} onPress={this.submitTitle}>
-          <Text style={styles.btnText}>SUBMIT</Text>
+          <Text style={styles.btnText}>Create Deck</Text>
         </TouchableOpacity>
       </KeyboardAvoidingView>
     )
@@ -80,11 +80,6 @@ class NewDeck extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   header: {
     alignItems: 'center',
     justifyContent: 'center',

@@ -71,7 +71,11 @@ export function addCardToDeck (card, title) {
     })
 }
 
-
+/**
+* Initialize app data, clear added decks / cards.
+*
+* @function clearDecks
+*/
 export function clearDecks () {
   return AsyncStorage.removeItem(DECKS_STORAGE_KEY)
 }
@@ -96,6 +100,3 @@ export function saveDeckTitle (title) {
       AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(newDecks))
     })
 }
-
-
-// getDeck: take in a single id argument and return the deck associated with that id.

@@ -16,7 +16,7 @@ class DeckMain extends Component {
   render() {
     const { title, questions, navigation } = this.props
     return (
-      <View style={[commonStyles.container, { flex: 1 }]}>
+      <View style={[commonStyles.container, { flex: 0.7 }]}>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.cardNumber}>{questions.length} cards</Text>
         <TouchableOpacity style={styles.btnLight} onPress={() => navigation.navigate(

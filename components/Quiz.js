@@ -9,6 +9,7 @@ import { blue, purple, orange, white } from '../utils/colors'
 class Quiz extends Component {
   state = {
     isQuestionSide: true,
+    isLastCard: false,
     cardIndex: 0,
     score: 0,
   }
@@ -19,27 +20,72 @@ class Quiz extends Component {
     }))
   }
 
+  handleSelectClick = (isCorrect) => {
+    // Check if it's the last card
+    const { cardIndex } = this.state
+    const { questions } = this.props.deck
+    if ( cardIndex + 1 === questions.length ) {
+      this.setState((preState) => ({
+        isLastCard: true,
+        score: isCorrect ? preState.score + 1 : preState.score,
+      }))
+    } else {
+      this.setState((preState) => ({
+        isQuestionSide: true,
+        cardIndex: preState.cardIndex + 1,
+        score: isCorrect ? preState.score + 1 : preState.score,
+      }))
+    }
+  }
+
+  handleRestart = () => {
+    this.setState({
+      isQuestionSide: true,
+      isLastCard: false,
+      cardIndex: 0,
+      score: 0,
+    })
+  }
+
   render () {
-    const { isQuestionSide, cardIndex } = this.state
-    const { deck } = this.props
+    const { isQuestionSide, isLastCard, cardIndex, score } = this.state
+    const { deck, navigation } = this.props
     const { questions } = deck
     return (
       <View>
-        <View style={styles.indexContainer}>
-          <Text style={{color: purple}}>{`${cardIndex + 1} / ${questions.length}`}</Text>
-        </View>
-        {isQuestionSide
-          ? <QuizDetail content={questions[cardIndex].question} link={'ANSWER'} handleClickLink={this.handleClickLink} />
-          : <QuizDetail content={questions[cardIndex].answer} link={'Question'} handleClickLink={this.handleClickLink} />
+        {!isLastCard
+          ? (
+              <View>
+                <View style={styles.indexContainer}>
+                  <Text style={{color: purple}}>{`${cardIndex + 1} / ${questions.length}`}</Text>
+                </View>
+                {isQuestionSide
+                  ? <QuizDetail content={questions[cardIndex].question} link={'Answer'} handleClickLink={this.handleClickLink} />
+                  : <QuizDetail content={questions[cardIndex].answer} link={'Question'} handleClickLink={this.handleClickLink} />
+                }
+                <View style={[commonStyles.container, {marginTop: 50}]}>
+                  <TouchableOpacity style={[styles.btn, styles.btnCorrect]} onPress={() => this.handleSelectClick(true)}>
+                    <Text style={styles.btnText}>Correct</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={[styles.btn, styles.btnInCorrect]} onPress={() => this.handleSelectClick(false)}>
+                    <Text style={styles.btnText}>Incorrect</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            )
+          : (
+              <View style={commonStyles.container}>
+                <Text style={styles.score}>{(score / questions.length * 100).toFixed(0)} %</Text>
+                <Text style={styles.underScoreTxt}>Correct!</Text>
+                <TouchableOpacity style={[styles.btn, styles.btnCorrect]} onPress={this.handleRestart}>
+                  <Text style={styles.btnText}>Restart Quiz</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={[styles.btn, styles.btnBack]} onPress={() => navigation.navigate('DeckMain') }>
+                  <Text style={styles.btnBackText}>Back to Deck</Text>
+                </TouchableOpacity>
+              </View>
+            )
         }
-        <View style={[commonStyles.container, {marginTop: 50}]}>
-          <TouchableOpacity style={[styles.btn, styles.btnCorrect]} onPress={this.handleClickCorrect}>
-            <Text style={styles.btnText}>Correct</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={[styles.btn, styles.btnInCorrect]} onPress={this.handleClickInCorrect}>
-            <Text style={styles.btnText}>Incorrect</Text>
-          </TouchableOpacity>
-        </View>
       </View>
     )
   }
@@ -65,9 +111,28 @@ const styles = StyleSheet.create({
   btnInCorrect: {
     backgroundColor: orange,
   },
+  btnBack: {
+    backgroundColor: white,
+  },
   btnText: {
     color: white,
     fontWeight: '500',
+  },
+  btnBackText: {
+    color: purple,
+    fontWeight: '500',
+  },
+  score: {
+    marginTop: 60,
+    fontSize: 60,
+    fontWeight:'bold',
+    marginBottom: 30,
+    color: purple
+  },
+  underScoreTxt: {
+    fontSize: 20,
+    color: blue,
+    marginBottom: 40,
   }
 })
 

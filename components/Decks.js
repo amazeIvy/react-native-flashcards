@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, TouchableOpacity } from 'react-native'
+import { Text, ScrollView, TouchableOpacity } from 'react-native'
 import DeckCard from './DeckCard'
 import { handleInitialData } from '../actions'
 import { connect } from 'react-redux'
@@ -17,7 +17,7 @@ class Decks extends Component {
     const { decks, navigation } = this.props
 
     return (
-      <View style={commonStyles.container}>
+      <ScrollView contentContainerStyle={commonStyles.container}>
         {decks && Object.keys(decks).map((key) => (
           <TouchableOpacity key={key} onPress={() => navigation.navigate(
             'DeckMain',
@@ -32,7 +32,7 @@ class Decks extends Component {
         <TouchableOpacity onPress={clearDecks}>
           <Text>Clear</Text>{/* only for test */}
         </TouchableOpacity>
-      </View>
+      </ScrollView>
     )
   }
 }

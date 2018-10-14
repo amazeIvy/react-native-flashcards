@@ -8,7 +8,7 @@ const QuizDetail = ({ content, link, handleClickLink }) => {
     <View style={[commonStyles.container, { height: 300 }]}>
       <Text style={styles.content}>{content}</Text>
       <TouchableOpacity onPress={handleClickLink}>
-        <Text style={styles.link}>{link}</Text>
+        <Text style={styles.link}>Show {link}</Text>
       </TouchableOpacity>
     </View>
   )
