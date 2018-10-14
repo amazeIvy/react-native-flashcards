@@ -1,4 +1,5 @@
-## An React Native/Redux App will allow you to set up your flashcards and keep learning everyday
+## React Native/Redux App - Flashcards
+Allow you to set up your flashcards and keep learning everyday
 
 ### How to install
 In your Terminal(mac)/Command Line(Windows), enter the commands below
@@ -23,22 +24,23 @@ You need an simulator or a mobile device to run this app. The easiest way is to 
 ### How the app looks like
 - Decks (Initial view of the app)
 
-<img src="./screen_shots/Decks-List.png" alt="screen shots" style="width:20px;"/>
-
+<img src="./screen_shots/Decks-List.png" alt="screen shots" width="200"/>
 Will show 2 default Decks
 
 - New Deck
-<img src="./screen_shots/Add-New-Deck.png" alt="screen shots" style="width:20px;"/>
+<img src="./screen_shots/Add-New-Deck.png" alt="screen shots" width="200"/>
 
 - New Card
-<img src="./screen_shots/Add-New-Card.png" alt="screen shots" style="width:20px;"/>
+<img src="./screen_shots/Add-New-Card.png" alt="screen shots" width="200"/>
 
 - Start a quiz
-<img src="./screen_shots/Quiz-Question.png" alt="screen shots" style="width:20px;"/>
-<img src="./screen_shots/Quiz-Answer.png" alt="screen shots" style="width:20px;"/>
+<img src="./screen_shots/Quiz-Question.png" alt="screen shots" width="200"/>
+Show quiz question
+<img src="./screen_shots/Quiz-Answer.png" alt="screen shots" width="200"/>
+Show quiz answer
 
 - Show the score
-<img src="./screen_shots/Quiz-score.png" alt="screen shots" style="width:20px;"/>
+<img src="./screen_shots/Quiz-score.png" alt="screen shots" width="200"/>
 
 
 ### Dev Tests
