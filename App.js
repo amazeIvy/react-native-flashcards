@@ -9,6 +9,7 @@ import DeckMain from './components/DeckMain'
 import AddCard from './components/AddCard'
 import Quiz from './components/Quiz'
 import { purple, white } from './utils/colors'
+import { setLocalNotification } from './utils/api'
 
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
@@ -33,6 +34,9 @@ const Tabs = createBottomTabNavigator({
     }
   }
 }, {
+  initialRouteName: 'Decks',
+  backBehavior: 'Decks',
+},{
   tabBarOptions: {
     activeTintColor: purple,
     style: {
@@ -83,6 +87,9 @@ const MainNavigator = createStackNavigator({
 
 
 export default class App extends React.Component {
+  componentDidMount () {
+    setLocalNotification()
+  }
   render() {
     return (
       <Provider store={store}>

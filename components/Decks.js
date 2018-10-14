@@ -1,20 +1,29 @@
 import React, { Component } from 'react'
-import { Text, ScrollView, TouchableOpacity } from 'react-native'
+import { Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native'
 import DeckCard from './DeckCard'
-import { handleInitialData } from '../actions'
+import { handleInitialData, clearCustomDecks } from '../actions'
 import { connect } from 'react-redux'
-import { clearDecks } from '../utils/api' /* only for test */
+import { clearDecks } from '../utils/api'
 import commonStyles from '../utils/styles'
+import { blue } from '../utils/colors'
+
 
 
 class Decks extends Component {
   componentDidMount () {
-    this.props.dispatch(handleInitialData());
+    const { decks, dispatch } = this.props
+    dispatch(handleInitialData())
+  }
+
+  clear = () => {
+    this.props.dispatch(clearCustomDecks())
+    clearDecks()
+    this.props.dispatch(handleInitialData())
   }
 
   render () {
 
-    const { decks, navigation } = this.props
+    const { decks, isInitialData, navigation } = this.props
 
     return (
       <ScrollView contentContainerStyle={commonStyles.container}>
@@ -29,17 +38,33 @@ class Decks extends Component {
             />
           </TouchableOpacity>
         ))}
-        <TouchableOpacity onPress={clearDecks}>
-          <Text>Clear</Text>{/* only for test */}
-        </TouchableOpacity>
+        {!isInitialData
+          ? (
+              <TouchableOpacity onPress={this.clear}>
+                <Text style={styles.clearTxt}>RESET</Text>
+              </TouchableOpacity>
+            )
+          : null
+        }
       </ScrollView>
     )
   }
 }
 
+const styles = StyleSheet.create({
+  clearTxt: {
+    color: blue,
+    fontSize: 12,
+    marginTop: 20,
+    marginBottom: 30,
+    fontWeight: '300',
+  }
+})
+
 function mapStateToProps ({ decks }) {
   return {
     decks,
+    isInitialData: decks && Object.keys(decks).length === 2,
   }
 }
 
