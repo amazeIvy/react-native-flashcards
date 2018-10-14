@@ -22,13 +22,24 @@ You need an simulator or a mobile device to run this app. The easiest way is to 
 
 ### How the app looks like
 - Decks (Initial view of the app)
-![App Interface](https://amazeivy.github.io/react-native-flashcards/screen_shots/Decks-List.png)
+
+<img src="./screen_shots/Decks-List.png" alt="screen shots" style="width:20px;"/>
+
 Will show 2 default Decks
 
 - New Deck
+<img src="./screen_shots/Add-New-Deck.png" alt="screen shots" style="width:20px;"/>
+
 - New Card
+<img src="./screen_shots/Add-New-Card.png" alt="screen shots" style="width:20px;"/>
+
 - Start a quiz
+<img src="./screen_shots/Quiz-Question.png" alt="screen shots" style="width:20px;"/>
+<img src="./screen_shots/Quiz-Answer.png" alt="screen shots" style="width:20px;"/>
+
 - Show the score
+<img src="./screen_shots/Quiz-score.png" alt="screen shots" style="width:20px;"/>
+
 
 ### Dev Tests
 I have tested all functions through iOS simulator and my iPhone 7. Everything is working fine.
