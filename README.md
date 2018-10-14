@@ -37,8 +37,11 @@ Will show 2 default Decks
 <img src="./screen_shots/Quiz-Question.png" alt="screen shots" width="200"/>
 Show quiz question
 
+
 <img src="./screen_shots/Quiz-Answer.png" alt="screen shots" width="200"/>
 Show quiz answer
+
+
 
 - Show the score
 <img src="./screen_shots/Quiz-score.png" alt="screen shots" width="200"/>
