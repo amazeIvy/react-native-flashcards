@@ -50,6 +50,4 @@ Show quiz answer
 
 
 ### Dev Tests
-I have tested all functions through iOS simulator and my iPhone 7. Everything is working fine.
-
-I also tested on android simulator, unfortunately the **Resart Quiz** button below score when finishing a quiz won't working
+I have tested all functions through iOS/android simulator and my iPhone 7. Everything is working fine.
