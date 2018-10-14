@@ -22,6 +22,9 @@ You need an simulator or a mobile device to run this app. The easiest way is to 
 
 ### How the app looks like
 - Decks (Initial view of the app)
+![App Interface](https://amazeivy.github.io/react-native-flashcards/screen_shots/Decks-List.png)
+Will show 2 default Decks
+
 - New Deck
 - New Card
 - Start a quiz
